@@ -4,29 +4,33 @@ import { Link } from "react-router-dom";
 import { NavbarLinks } from "./Navbar";
 
 const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
-  console.log("showMenu", showMenu);
   return (
     <div
-      className={`${
-        showMenu ? "left-0" : "-left-[100%]"
-      } fixed bottom-0 top-0 z-20 flex h-screen w-[75%] flex-col justify-between bg-white dark:bg-gray-900 dark:text-white px-8 pb-6 pt-16 text-black transition-all duration-200 md:hidden rounded-r-xl shadow-md`}
+      className={`fixed top-0 bottom-0 z-20 flex h-screen w-[75%] flex-col justify-between bg-white dark:bg-gray-900 dark:text-white px-8 pb-6 pt-16 text-black transition-all duration-300 md:hidden rounded-r-xl shadow-lg ${
+        showMenu ? "left-0" : "-left-full"
+      }`}
     >
-      <div className="card">
-        <div className="flex items-center justify-start gap-3">
-          <FaUserCircle size={50} />
+      {/* User Info */}
+      <div>
+        <div className="flex items-center gap-3">
+          <FaUserCircle size={50} className="text-gray-700 dark:text-gray-300" />
           <div>
-            <h1>Hello User</h1>
-            <h1 className="text-sm text-slate-500">Premium user</h1>
+            <h1 className="text-lg font-semibold">Hello User</h1>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Premium user
+            </p>
           </div>
         </div>
+
+        {/* Navigation Links */}
         <nav className="mt-12">
-          <ul className="space-y-4 text-xl">
-            {NavbarLinks.map((data) => (
-              <li>
+          <ul className="space-y-5 text-lg font-medium">
+            {NavbarLinks.map((data, index) => (
+              <li key={index}>
                 <Link
                   to={data.link}
                   onClick={() => setShowMenu(false)}
-                  className="mb-5 inline-block"
+                  className="block hover:text-blue-500 transition-colors"
                 >
                   {data.name}
                 </Link>
@@ -35,10 +39,18 @@ const ResponsiveMenu = ({ showMenu, setShowMenu }) => {
           </ul>
         </nav>
       </div>
-      <div className="footer">
-        <h1>
-          Made with ❤ by <a href="https://dilshad-ahmed.github.io/">Dev</a>{" "}
-        </h1>
+
+      {/* Footer */}
+      <div className="text-center text-sm text-gray-600 dark:text-gray-400">
+        Made with <span className="text-red-500">❤</span> by{" "}
+        <a
+          href="https://dilshad-ahmed.github.io/"
+          target="_blank"
+          rel="noreferrer"
+          className="hover:underline hover:text-blue-500"
+        >
+          Dev
+        </a>
       </div>
     </div>
   );

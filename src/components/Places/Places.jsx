@@ -1,18 +1,21 @@
 import React from "react";
 import PlaceCard from "./PlaceCard";
-import Img1 from "../../assets/places/New York.jpg";
+
+// ✅ Fixed imports with consistent lowercase, no spaces
+import Img1 from "../../assets/places/new-york.jpg";
 import Img2 from "../../assets/places/tajmahal.jpg";
-import Img3 from "../../assets/places/Washington.jpeg";
+import Img3 from "../../assets/places/washington.jpeg";
 import Img4 from "../../assets/places/sydney.webp";
 import Img5 from "../../assets/places/shanghai.jpeg";
-import Img6 from "../../assets/places/bejing.jpeg";
+import Img6 from "../../assets/places/beijing.jpeg";
 
 const PlacesData = [
   {
     img: Img1,
     title: "Time Square",
     location: "USA",
-    description: "Times Square – the vibrant heart of New York City, famous for its dazzling lights, bustling energy, and iconic attractions.",
+    description:
+      "Times Square – the vibrant heart of New York City, famous for its dazzling lights, bustling energy, and iconic attractions.",
     price: 443,
     type: "Cultural Relax",
   },
@@ -37,8 +40,9 @@ const PlacesData = [
   {
     img: Img4,
     title: "Sydney",
-    location: "USA",
-    description: "Sydney, Australia, is a vibrant city famous for its iconic Sydney Opera House, Harbour Bridge, and stunning beaches, offering a perfect mix of urban excitement, cultural experiences, and breathtaking coastal beauty.",
+    location: "Australia",
+    description:
+      "Sydney, Australia, is a vibrant city famous for its iconic Sydney Opera House, Harbour Bridge, and stunning beaches, offering a perfect mix of urban excitement, cultural experiences, and breathtaking coastal beauty.",
     price: 2000,
     type: "Cultural Relax",
   },
@@ -64,24 +68,22 @@ const PlacesData = [
 
 const Places = ({ handleOrderPopup }) => {
   return (
-    <>
-      <div className="dark:bg-gray-900 dark:text-white bg-gray-50 py-10">
-        <section data-aos="fade-up" className="container ">
-          <h1 className=" my-8 border-l-8 border-primary/50 py-2 pl-2 text-3xl font-bold">
-            Best Places to Visit
-          </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {PlacesData.map((item, index) => (
-              <PlaceCard
-                handleOrderPopup={handleOrderPopup}
-                key={index}
-                {...item}
-              />
-            ))}
-          </div>
-        </section>
-      </div>
-    </>
+    <div className="dark:bg-gray-900 dark:text-white bg-gray-50 py-10">
+      <section data-aos="fade-up" className="container ">
+        <h1 className=" my-8 border-l-8 border-primary/50 py-2 pl-2 text-3xl font-bold">
+          Best Places to Visit
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {PlacesData.map((item, index) => (
+            <PlaceCard
+              handleOrderPopup={handleOrderPopup}
+              key={index}
+              {...item}
+            />
+          ))}
+        </div>
+      </section>
+    </div>
   );
 };
 
